@@ -1,9 +1,5 @@
 <?php 
-/**
- * http://stackoverflow.com/questions/9262109/php-simplest-two-way-encryption/30189841#30189841
- * 
- * This is not safe to use
- */
+
     class UnsafeCrypto
     {
         const METHOD = 'aes-256-ctr';
