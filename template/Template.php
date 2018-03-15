@@ -10,66 +10,6 @@ class Template {
 					'path' => 'default/',
 					'file-header' => 'header.php',
 					'file-footer' => 'footer.php'
-			],
-			'athletics' => [
-					'path' => 'athletics/',
-					'file-header' => 'header.php',
-					'file-footer' => 'footer.php'
-			],
-			'mybill' => [
-					'path' => 'mybill/',
-					'file-header' => 'header.php',
-					'file-footer' => 'footer.php'
-			],
-			'mybillNoNav' => [
-					'path' => 'mybill/',
-					'file-header' => 'header_nonav.php',
-					'file-footer' => 'footer_nonav.php'
-			],
-			'abroad' => [
-					'path' => 'abroad/',
-					'file-header' => 'header.php',
-					'file-footer' => 'footer.php'
-			],
-			'internships' => [
-					'path' => 'internships/',
-					'file-header' => 'header.php',
-					'file-footer' => 'footer.php'
-			],
-			'www-generic' => [
-					'path' => 'www-generic/',
-					'file-header' => 'header.php',
-					'file-footer' => 'footer.php'
-			],
-			'mycentral' => [
-					'path' => 'mycentral/',
-					'file-header' => 'header.php',
-					'file-footer' => 'footer.php'
-			],
-			'classdeans' => [
-					'path' => 'classdeans/',
-					'file-header' => 'header.php',
-					'file-footer' => 'footer.php'
-			],
-			'classdeans-non' => [
-					'path' => 'classdeans/',
-					'file-header' => 'noheader.php',
-					'file-footer' => 'nofooter.php'
-			],
-			'student' => [
-					'path' => 'student/',
-					'file-header' => 'header.php',
-					'file-footer' => 'footer.php'
-			],
-			'ssc' => [
-					'path' => 'selfservice/',
-					'file-header' => 'header.php',
-					'file-footer' => 'footer.php'
-			],
-			'ww2-generic' => [
-					'path' => 'ww2-generic/',
-					'file-header' => 'header.php',
-					'file-footer' => 'footer.php'
 			]
 	];
 	
