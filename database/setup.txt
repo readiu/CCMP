@@ -1,1 +1,1166 @@
 
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [master]
+GO
+
+/****** Object:  Database [MathCS]    Script Date: 3/15/2018 11:26:16 AM ******/
+CREATE DATABASE [MathCS] ON  PRIMARY 
+( NAME = N'MathCS_Data', FILENAME = N'G:\MathCS_Data.MDF' , SIZE = 26560KB , MAXSIZE = UNLIMITED, FILEGROWTH = 10%)
+ LOG ON 
+( NAME = N'MathCS_Log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL.2\MSSQL\Data\MathCS_Log.LDF' , SIZE = 6912KB , MAXSIZE = UNLIMITED, FILEGROWTH = 10%)
+GO
+
+ALTER DATABASE [MathCS] SET COMPATIBILITY_LEVEL = 100
+GO
+
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [MathCS].[dbo].[sp_fulltext_database] @action = 'disable'
+end
+GO
+
+ALTER DATABASE [MathCS] SET ANSI_NULL_DEFAULT OFF 
+GO
+
+ALTER DATABASE [MathCS] SET ANSI_NULLS OFF 
+GO
+
+ALTER DATABASE [MathCS] SET ANSI_PADDING OFF 
+GO
+
+ALTER DATABASE [MathCS] SET ANSI_WARNINGS OFF 
+GO
+
+ALTER DATABASE [MathCS] SET ARITHABORT OFF 
+GO
+
+ALTER DATABASE [MathCS] SET AUTO_CLOSE OFF 
+GO
+
+ALTER DATABASE [MathCS] SET AUTO_SHRINK OFF 
+GO
+
+ALTER DATABASE [MathCS] SET AUTO_UPDATE_STATISTICS ON 
+GO
+
+ALTER DATABASE [MathCS] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+
+ALTER DATABASE [MathCS] SET CURSOR_DEFAULT  GLOBAL 
+GO
+
+ALTER DATABASE [MathCS] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+
+ALTER DATABASE [MathCS] SET NUMERIC_ROUNDABORT OFF 
+GO
+
+ALTER DATABASE [MathCS] SET QUOTED_IDENTIFIER OFF 
+GO
+
+ALTER DATABASE [MathCS] SET RECURSIVE_TRIGGERS OFF 
+GO
+
+ALTER DATABASE [MathCS] SET  DISABLE_BROKER 
+GO
+
+ALTER DATABASE [MathCS] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+
+ALTER DATABASE [MathCS] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+
+ALTER DATABASE [MathCS] SET TRUSTWORTHY OFF 
+GO
+
+ALTER DATABASE [MathCS] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+
+ALTER DATABASE [MathCS] SET PARAMETERIZATION SIMPLE 
+GO
+
+ALTER DATABASE [MathCS] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+
+ALTER DATABASE [MathCS] SET HONOR_BROKER_PRIORITY OFF 
+GO
+
+ALTER DATABASE [MathCS] SET RECOVERY FULL 
+GO
+
+ALTER DATABASE [MathCS] SET  MULTI_USER 
+GO
+
+ALTER DATABASE [MathCS] SET PAGE_VERIFY TORN_PAGE_DETECTION  
+GO
+
+ALTER DATABASE [MathCS] SET DB_CHAINING OFF 
+GO
+
+ALTER DATABASE [MathCS] SET  READ_WRITE 
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[AllFaculty]    Script Date: 3/15/2018 11:31:20 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[AllFaculty](
+	[FacID] [float] NULL,
+	[Fname] [nvarchar](255) NULL,
+	[LName] [nvarchar](255) NULL,
+	[Email] [nvarchar](255) NULL,
+	[Active] [nvarchar](255) NULL
+) ON [PRIMARY]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[AllTables]    Script Date: 3/15/2018 11:31:30 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[AllTables](
+	[tabid] [int] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](50) NULL,
+	[idfield] [varchar](50) NULL,
+	[dteditQ] [nchar](1) NULL,
+	[status] [varchar](50) NULL,
+	[description] [varchar](150) NULL,
+ CONSTRAINT [PK_AllTables] PRIMARY KEY CLUSTERED 
+(
+	[tabid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[Answers]    Script Date: 3/15/2018 11:31:42 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Answers](
+	[PID] [float] NOT NULL,
+	[Exam] [nvarchar](255) NULL,
+	[Q1] [nvarchar](255) NULL,
+	[Q2] [nvarchar](255) NULL,
+	[Q3] [nvarchar](255) NULL,
+	[Q4] [nvarchar](255) NULL,
+	[Q5] [nvarchar](255) NULL,
+	[Q6] [nvarchar](255) NULL,
+	[Q7] [nvarchar](255) NULL,
+	[Q8] [nvarchar](255) NULL,
+	[Q9] [nvarchar](255) NULL,
+	[Q10] [nvarchar](255) NULL,
+	[Q11] [nvarchar](255) NULL,
+	[Q12] [nvarchar](255) NULL,
+	[Q13] [nvarchar](255) NULL,
+	[Q14] [nvarchar](255) NULL,
+	[Q15] [nvarchar](255) NULL,
+	[Q16] [nvarchar](255) NULL,
+	[Q17] [nvarchar](255) NULL,
+	[Q18] [nvarchar](255) NULL,
+	[Q19] [nvarchar](255) NULL,
+	[Q20] [nvarchar](255) NULL,
+	[Q21] [nvarchar](255) NULL,
+	[Q22] [nvarchar](255) NULL,
+	[Q23] [nvarchar](255) NULL,
+	[Q24] [nvarchar](255) NULL,
+	[Q25] [nvarchar](255) NULL,
+	[Q26] [nvarchar](255) NULL,
+	[Q27] [nvarchar](255) NULL,
+	[Q28] [nvarchar](255) NULL,
+	[Q29] [nvarchar](255) NULL,
+	[Q30] [nvarchar](255) NULL,
+	[Q31] [nvarchar](255) NULL,
+	[Q32] [nvarchar](255) NULL,
+	[DateEdited] [smalldatetime] NULL,
+	[DateTimeExamStart] [smalldatetime] NULL,
+ CONSTRAINT [PK_Answers] PRIMARY KEY CLUSTERED 
+(
+	[PID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[CourseComments]    Script Date: 3/15/2018 11:31:59 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CourseComments](
+	[CourseNumber] [int] NOT NULL,
+	[CourseName] [nvarchar](100) NOT NULL,
+	[CourseComment] [varchar](200) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[CourseNumber] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[Courses]    Script Date: 3/15/2018 11:32:29 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Courses](
+	[CourseID] [int] IDENTITY(1,1) NOT NULL,
+	[Dept] [nvarchar](255) NULL,
+	[Num] [float] NULL,
+	[Suffix] [nvarchar](255) NULL,
+	[CatDescription] [text] NULL,
+	[Frequency] [nvarchar](255) NULL,
+	[Texts] [text] NULL,
+	[Goals] [text] NULL,
+	[Audience] [text] NULL,
+	[Semester] [nvarchar](255) NULL,
+	[Years] [nvarchar](255) NULL,
+	[OldNum] [nvarchar](255) NULL,
+	[Status] [nvarchar](3) NULL,
+ CONSTRAINT [PK_Courses] PRIMARY KEY CLUSTERED 
+(
+	[CourseID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[Courses_For_Majors]    Script Date: 3/15/2018 11:32:38 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Courses_For_Majors](
+	[Major] [varchar](75) NOT NULL,
+	[A] [nvarchar](50) NULL,
+	[B] [nvarchar](50) NULL,
+	[C] [nvarchar](50) NULL,
+	[D] [nvarchar](50) NULL,
+	[E] [nvarchar](50) NULL,
+	[Enabled] [bit] NOT NULL,
+	[CommentA] [varchar](300) NULL,
+	[CommentB] [varchar](300) NULL,
+	[CommentC] [varchar](300) NULL,
+	[CommentD] [varchar](300) NULL,
+	[CommentE] [varchar](300) NULL,
+ CONSTRAINT [PK_Courses_For_Majors] PRIMARY KEY CLUSTERED 
+(
+	[Major] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Courses_For_Majors] ADD  DEFAULT ((1)) FOR [Enabled]
+GO
+
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[dtproperties]    Script Date: 3/15/2018 11:32:49 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[dtproperties](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[objectid] [int] NULL,
+	[property] [varchar](64) NOT NULL,
+	[value] [varchar](255) NULL,
+	[uvalue] [nvarchar](255) NULL,
+	[lvalue] [image] NULL,
+	[version] [int] NOT NULL,
+ CONSTRAINT [pk_dtproperties] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC,
+	[property] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[dtproperties] ADD  DEFAULT (0) FOR [version]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[Events]    Script Date: 3/15/2018 11:33:06 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Events](
+	[ItemID] [int] IDENTITY(1,1) NOT NULL,
+	[WebInclude] [nvarchar](255) NULL,
+	[Date] [smalldatetime] NULL,
+	[Time] [nvarchar](255) NULL,
+	[Location] [nvarchar](255) NULL,
+	[Contact] [nvarchar](255) NULL,
+	[CategoryID] [float] NULL,
+	[MoreInfoURL] [nvarchar](255) NULL,
+	[Description] [nvarchar](2500) NULL,
+	[Title] [nvarchar](255) NULL,
+ CONSTRAINT [PK_Events] PRIMARY KEY CLUSTERED 
+(
+	[ItemID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[Faculty]    Script Date: 3/15/2018 11:33:14 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Faculty](
+	[FacID] [int] IDENTITY(1,1) NOT NULL,
+	[LookupID] [float] NULL,
+	[FirstName] [nvarchar](255) NULL,
+	[FirstInit] [nvarchar](255) NULL,
+	[LastName] [nvarchar](255) NULL,
+	[Email] [nvarchar](255) NULL,
+	[Discipline] [nvarchar](255) NULL,
+	[PhDArea] [nvarchar](255) NULL,
+	[BirthdayMonth] [float] NULL,
+	[BirthdayDay] [float] NULL,
+	[Birthday] [smalldatetime] NULL,
+	[CurrentTF] [nvarchar](255) NULL,
+	[Status] [nvarchar](255) NULL,
+	[OfficeNumber] [nvarchar](255) NULL,
+	[WorkTelephone] [nvarchar](255) NULL,
+	[HomeTelephone] [nvarchar](255) NULL,
+	[BoxNumber] [nvarchar](255) NULL,
+	[Address1] [nvarchar](255) NULL,
+	[Address2] [nvarchar](255) NULL,
+	[City] [nvarchar](255) NULL,
+	[State] [nvarchar](255) NULL,
+	[Zip] [nvarchar](255) NULL,
+	[Spouse] [nvarchar](255) NULL,
+	[DateEdited] [smalldatetime] NULL,
+	[YearStarted] [nvarchar](255) NULL,
+	[YearEnded] [nvarchar](255) NULL,
+	[Comments] [text] NULL,
+	[Title] [nvarchar](255) NULL,
+	[Homepage] [nvarchar](255) NULL,
+	[Degrees] [nvarchar](255) NULL,
+	[PhotoURL] [nvarchar](255) NULL,
+	[AcademicInterests] [nvarchar](255) NULL,
+	[NonacademicInterests] [nvarchar](255) NULL,
+	[NewsUpdateInclude] [nvarchar](255) NULL,
+	[CentralExperiences] [text] NULL,
+	[CurrentActivities] [text] NULL,
+ CONSTRAINT [PK_Faculty] PRIMARY KEY CLUSTERED 
+(
+	[FacID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[ItemCategories]    Script Date: 3/15/2018 11:33:24 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ItemCategories](
+	[CategoryID] [int] IDENTITY(1,1) NOT NULL,
+	[CategoryTitle] [nvarchar](255) NULL,
+ CONSTRAINT [PK_ItemCategories] PRIMARY KEY CLUSTERED 
+(
+	[CategoryID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[Majors]    Script Date: 3/15/2018 11:33:38 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Majors](
+	[MajorID] [int] IDENTITY(1,1) NOT NULL,
+	[MajorR] [nvarchar](255) NULL,
+	[Status] [nvarchar](255) NULL,
+	[Code] [nvarchar](255) NULL,
+	[Major] [nvarchar](255) NULL,
+	[LongName] [nvarchar](255) NULL,
+ CONSTRAINT [PK_Majors] PRIMARY KEY CLUSTERED 
+(
+	[MajorID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[NonMajors]    Script Date: 3/15/2018 11:33:46 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[NonMajors](
+	[nonID] [int] IDENTITY(1,1) NOT NULL,
+	[CCid] [int] NULL,
+ CONSTRAINT [PK_NonMajors] PRIMARY KEY CLUSTERED 
+(
+	[nonID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[Photos]    Script Date: 3/15/2018 11:33:55 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Photos](
+	[PhotoID] [int] IDENTITY(1,1) NOT NULL,
+	[filename] [nvarchar](255) NULL,
+	[Path] [nvarchar](255) NULL,
+	[Caption] [nvarchar](255) NULL,
+	[Notes] [text] NULL,
+	[date] [smalldatetime] NULL,
+	[keywords] [nvarchar](255) NULL,
+	[Photographer] [nvarchar](255) NULL,
+	[WebReady] [nvarchar](255) NULL,
+ CONSTRAINT [PK_Photos] PRIMARY KEY CLUSTERED 
+(
+	[PhotoID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[PlacementData]    Script Date: 3/15/2018 11:34:02 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[PlacementData](
+	[PID] [int] IDENTITY(1,1) NOT NULL,
+	[CompletedYN] [nvarchar](255) NULL,
+	[LastName] [nvarchar](255) NULL,
+	[FirstName] [nvarchar](255) NULL,
+	[Adviser] [nvarchar](255) NULL,
+	[MathACT] [float] NULL,
+	[CompositeACT] [float] NULL,
+	[Exam] [nvarchar](255) NULL,
+	[Score] [float] NULL,
+	[PrelimPlacement] [float] NULL,
+	[Placement] [float] NULL,
+	[Distance] [nvarchar](255) NULL,
+	[borderlineQ] [nvarchar](50) NULL,
+	[YearTaken] [float] NULL,
+	[MinutesSpent] [float] NULL,
+	[CentralID] [nvarchar](255) NULL,
+	[EnglishACT] [float] NULL,
+	[ReadingACT] [float] NULL,
+	[ScienceACT] [float] NULL,
+	[HSGPA] [float] NULL,
+	[Comment] [text] NULL,
+	[DateEdited] [smalldatetime] NULL,
+	[PR] [nvarchar](255) NULL,
+	[SumAdviser] [nvarchar](255) NULL,
+	[FirstCourse] [float] NULL,
+	[CourseYear] [float] NULL,
+	[CourseSemester] [nvarchar](255) NULL,
+	[CourseMidTerm] [nvarchar](255) NULL,
+	[CourseGrade] [nvarchar](255) NULL,
+	[Printed] [bit] NOT NULL,
+	[email] [varchar](100) NULL,
+ CONSTRAINT [PK_PlacementData] PRIMARY KEY CLUSTERED 
+(
+	[PID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[PlacementData] ADD  CONSTRAINT [DF_PlacementData_Printed]  DEFAULT ((0)) FOR [Printed]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[PlacementQuestionnaire]    Script Date: 3/15/2018 11:34:10 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[PlacementQuestionnaire](
+	[PID] [int] NOT NULL,
+	[YearsMath] [varchar](60) NULL,
+	[Polynomials] [varchar](50) NULL,
+	[Exponential] [varchar](50) NULL,
+	[Trig] [varchar](50) NULL,
+	[Logarithms] [varchar](50) NULL,
+	[Calc] [smallint] NULL,
+	[CalcAP] [varchar](9) NULL,
+	[IntegrationByParts] [bit] NULL,
+	[ImproperIntegrals] [bit] NULL,
+	[SequencesAndSeries] [bit] NULL,
+	[TaylorPolynomials] [bit] NULL,
+	[CalcTopics] [numeric](18, 0) NOT NULL,
+	[CollegeCredit] [bit] NULL,
+	[CollegeCourses] [varchar](150) NULL,
+	[CollegeName] [varchar](150) NULL,
+	[Average] [varchar](3) NULL,
+	[Ability] [varchar](3) NULL,
+	[LikeOfMath] [smallint] NULL,
+	[Major] [varchar](550) NULL,
+	[OtherMajors] [varchar](200) NULL,
+	[Completed] [datetime] NULL,
+ CONSTRAINT [PK_PlacementQuestionnaire] PRIMARY KEY CLUSTERED 
+(
+	[PID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[PlacementQuestionnaire] ADD  CONSTRAINT [DF_PlacementQuestionnaire_CalcTopics]  DEFAULT ((-1)) FOR [CalcTopics]
+GO
+
+ALTER TABLE [dbo].[PlacementQuestionnaire]  WITH NOCHECK ADD  CONSTRAINT [FK_PlacementQuestionnaire_PlacementData] FOREIGN KEY([PID])
+REFERENCES [dbo].[PlacementData] ([PID])
+ON DELETE CASCADE
+NOT FOR REPLICATION 
+GO
+
+ALTER TABLE [dbo].[PlacementQuestionnaire] CHECK CONSTRAINT [FK_PlacementQuestionnaire_PlacementData]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[Resources]    Script Date: 3/15/2018 11:34:17 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Resources](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[AuthorLN] [varchar](50) NULL,
+	[AuthorFN] [varchar](50) NULL,
+	[Title] [varchar](250) NULL,
+	[Location] [varchar](250) NULL,
+	[Discipline] [varchar](50) NULL,
+	[Comment] [varchar](2500) NULL,
+	[DateEdited] [smalldatetime] NULL,
+	[OKQ] [varchar](1) NULL,
+ CONSTRAINT [PK_Resources] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[SeminarSchedule]    Script Date: 3/15/2018 11:34:25 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[SeminarSchedule](
+	[SeminarDateID] [int] IDENTITY(1,1) NOT NULL,
+	[SeminarDate] [smalldatetime] NULL,
+	[Sup1ID] [float] NULL,
+	[Spkr1ID] [float] NULL,
+	[Sup2ID] [float] NULL,
+	[Spkr2ID] [float] NULL,
+	[Sup3ID] [float] NULL,
+	[Spkr3ID] [float] NULL,
+	[TalkType1] [nvarchar](255) NULL,
+	[TalkType2] [nvarchar](255) NULL,
+	[TalkType3] [nvarchar](255) NULL,
+	[Building] [nvarchar](255) NULL,
+	[Room] [nvarchar](255) NULL,
+	[Time] [nvarchar](255) NULL,
+	[DateEntered] [smalldatetime] NULL,
+	[DateEdited] [smalldatetime] NULL,
+	[status] [char](1) NULL,
+ CONSTRAINT [PK_SeminarSchedule] PRIMARY KEY CLUSTERED 
+(
+	[SeminarDateID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[SeminarSchedule] ADD  CONSTRAINT [DF_SeminarSchedule_status]  DEFAULT ('Z') FOR [status]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[SeminarTalks]    Script Date: 3/15/2018 11:34:33 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[SeminarTalks](
+	[SeminarID] [int] IDENTITY(1,1) NOT NULL,
+	[SeminarDateID] [float] NULL,
+	[IndividualID] [float] NULL,
+	[IndividualID2] [float] NULL,
+	[IndividualID3] [float] NULL,
+	[DateGiven] [smalldatetime] NULL,
+	[Supervisor] [float] NULL,
+	[TalkNum] [nvarchar](255) NULL,
+	[Title] [nvarchar](255) NULL,
+	[Abstract] [text] NULL,
+	[Sources] [text] NULL,
+	[DateEntered] [smalldatetime] NULL,
+	[Comments] [text] NULL,
+	[dataComplete] [nvarchar](255) NULL,
+	[DateEdited] [smalldatetime] NULL,
+	[status] [char](1) NULL,
+ CONSTRAINT [PK_SeminarTalks] PRIMARY KEY CLUSTERED 
+(
+	[SeminarID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[Students]    Script Date: 3/15/2018 11:34:44 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Students](
+	[IndividualID] [int] IDENTITY(1,1) NOT NULL,
+	[FirstName] [nvarchar](255) NULL,
+	[MI] [nvarchar](255) NULL,
+	[LastName] [nvarchar](255) NULL,
+	[GraduationYear] [float] NULL,
+	[Class] [nvarchar](255) NULL,
+	[WebInclude] [nvarchar](255) NULL,
+	[MailInclude] [nvarchar](255) NULL,
+	[MailSeminar] [nvarchar](255) NULL,
+	[SecurityQuestion] [float] NULL,
+	[SecurityAnswer] [nvarchar](255) NULL,
+	[MaidenName] [nvarchar](255) NULL,
+	[StudentID] [nvarchar](255) NULL,
+	[FirstMajor] [nvarchar](255) NULL,
+	[SecondMajor] [nvarchar](255) NULL,
+	[Minor] [nvarchar](255) NULL,
+	[SecondMinor] [nvarchar](255) NULL,
+	[FirstInterest] [nvarchar](255) NULL,
+	[SecondInterest] [nvarchar](255) NULL,
+	[Email] [nvarchar](255) NULL,
+	[AltEmail] [nvarchar](255) NULL,
+	[HomePage] [nvarchar](255) NULL,
+	[DateEdited] [smalldatetime] NULL,
+	[DateOfDeath] [smalldatetime] NULL,
+	[SexMF] [nvarchar](255) NULL,
+	[Address1] [nvarchar](255) NULL,
+	[Address2] [nvarchar](255) NULL,
+	[City] [nvarchar](255) NULL,
+	[State] [nvarchar](255) NULL,
+	[Zip] [nvarchar](255) NULL,
+	[TitleBusiness] [nvarchar](255) NULL,
+	[Business] [nvarchar](255) NULL,
+	[EmailBusiness] [nvarchar](255) NULL,
+	[Phone] [nvarchar](255) NULL,
+	[Goals] [text] NULL,
+	[NewsUpdateInclude] [nvarchar](255) NULL,
+	[JobDescription] [text] NULL,
+	[Comments] [text] NULL,
+	[WebID] [float] NULL,
+ CONSTRAINT [PK_Students] PRIMARY KEY CLUSTERED 
+(
+	[IndividualID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[Tasks]    Script Date: 3/15/2018 11:34:59 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Tasks](
+	[TaskID] [int] IDENTITY(1,1) NOT NULL,
+	[Category] [nvarchar](255) NULL,
+	[ShortDescription] [nvarchar](255) NULL,
+	[Timing] [nvarchar](255) NULL,
+	[Months] [nvarchar](255) NULL,
+	[AssignedTo] [nvarchar](255) NULL,
+	[DescriptionURL] [nvarchar](255) NULL,
+	[DateModified] [smalldatetime] NULL,
+	[LongDescription] [text] NULL,
+	[Season] [float] NULL,
+	[AlarmQ] [char](1) NULL,
+	[NumAlarms] [int] NULL,
+	[DaysEarlyToAlarm] [int] NULL,
+	[DaysBetweenAlarms] [int] NULL,
+ CONSTRAINT [PK_Tasks] PRIMARY KEY CLUSTERED 
+(
+	[TaskID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[tempPlacement]    Script Date: 3/15/2018 11:35:10 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[tempPlacement](
+	[tempid] [int] IDENTITY(1,1) NOT NULL,
+	[fname] [nvarchar](50) NULL,
+	[lname] [nvarchar](50) NULL,
+	[Cid] [nvarchar](50) NULL,
+	[mact] [float] NULL,
+	[status] [char](1) NULL
+) ON [PRIMARY]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[URLs]    Script Date: 3/15/2018 11:35:24 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[URLs](
+	[URLID] [int] IDENTITY(1,1) NOT NULL,
+	[SectionID] [float] NULL,
+	[SubsectionID] [float] NULL,
+	[URLText] [nvarchar](255) NULL,
+	[URL] [nvarchar](255) NULL,
+	[URLDescription] [nvarchar](255) NULL,
+	[WebInclude] [nvarchar](255) NULL,
+	[Subsection] [nvarchar](255) NULL,
+ CONSTRAINT [PK_URLs] PRIMARY KEY CLUSTERED 
+(
+	[URLID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[URLSections]    Script Date: 3/15/2018 11:35:33 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[URLSections](
+	[SectionID] [int] IDENTITY(1,1) NOT NULL,
+	[SectionTitle] [nvarchar](255) NULL,
+ CONSTRAINT [PK_URLSections] PRIMARY KEY CLUSTERED 
+(
+	[SectionID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2008 R2 (10.50.1600)
+    Source Database Engine Edition : Microsoft SQL Server Standard Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2008 R2
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+
+USE [MathCS]
+GO
+
+/****** Object:  Table [dbo].[URLSubsections]    Script Date: 3/15/2018 11:35:41 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[URLSubsections](
+	[SubsectionID] [int] IDENTITY(1,1) NOT NULL,
+	[SectionID] [int] NULL,
+	[SubsectionTitle] [nvarchar](255) NULL,
+	[SubsectionDescription] [nvarchar](255) NULL,
+	[WebInclude] [nvarchar](255) NULL,
+ CONSTRAINT [PK_URLSubsections] PRIMARY KEY CLUSTERED 
+(
+	[SubsectionID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
